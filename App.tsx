@@ -30,28 +30,33 @@ export default function App() {
   }, [count, ready]);
 
   return (
-    <View className="flex-1 items-center justify-center bg-white p-6">
-      <Text className="text-lg mb-3">Compteur persistant</Text>
-      <Text className="text-6xl font-bold mb-6">{count}</Text>
+    <View
+      className="flex-1 items-center justify-center bg-white p-6"
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, backgroundColor: '#ffffff' }}
+    >
+      <Text className="text-lg mb-3" style={{ fontSize: 18, marginBottom: 12 }}>Compteur persistant</Text>
+      <Text className="text-6xl font-bold mb-6" style={{ fontSize: 64, fontWeight: '700', marginBottom: 24 }}>{count}</Text>
 
-      <View className="flex-row space-x-6 mb-5">
+      <View className="flex-row space-x-6 mb-5" style={{ flexDirection: 'row', marginBottom: 20 }}>
         <TouchableOpacity
           className="w-20 h-20 rounded-full bg-red-500 items-center justify-center"
+          style={{ width: 80, height: 80, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EF4444' }}
           onPress={() => setCount((c) => c - 1)}
         >
-          <Text className="text-white text-3xl font-semibold">-</Text>
+          <Text className="text-white text-3xl font-semibold" style={{ color: '#fff', fontSize: 24, fontWeight: '600' }}>-</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           className="w-20 h-20 rounded-full bg-green-600 items-center justify-center"
+          style={{ width: 80, height: 80, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#16A34A' }}
           onPress={() => setCount((c) => c + 1)}
         >
-          <Text className="text-white text-3xl font-semibold">+</Text>
+          <Text className="text-white text-3xl font-semibold" style={{ color: '#fff', fontSize: 24, fontWeight: '600' }}>+</Text>
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity onPress={() => setCount(0)}>
-        <Text className="text-blue-600">Réinitialiser</Text>
+        <Text className="text-blue-600" style={{ color: '#007AFF' }}>Réinitialiser</Text>
       </TouchableOpacity>
 
       <StatusBar style="auto" />
