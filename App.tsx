@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const STORAGE_KEY = '@counter_value';
@@ -30,80 +30,31 @@ export default function App() {
   }, [count, ready]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Compteur persistant</Text>
-      <Text style={styles.count}>{count}</Text>
+    <View className="flex-1 items-center justify-center bg-white p-6">
+      <Text className="text-lg mb-3">Compteur persistant</Text>
+      <Text className="text-6xl font-bold mb-6">{count}</Text>
 
-      <View style={styles.row}>
+      <View className="flex-row space-x-6 mb-5">
         <TouchableOpacity
-          style={[styles.button, styles.decrement]}
+          className="w-20 h-20 rounded-full bg-red-500 items-center justify-center"
           onPress={() => setCount((c) => c - 1)}
         >
-          <Text style={styles.buttonText}>-</Text>
+          <Text className="text-white text-3xl font-semibold">-</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.button, styles.increment]}
+          className="w-20 h-20 rounded-full bg-green-600 items-center justify-center"
           onPress={() => setCount((c) => c + 1)}
         >
-          <Text style={styles.buttonText}>+</Text>
+          <Text className="text-white text-3xl font-semibold">+</Text>
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.reset} onPress={() => setCount(0)}>
-        <Text style={styles.resetText}>Réinitialiser</Text>
+      <TouchableOpacity onPress={() => setCount(0)}>
+        <Text className="text-blue-600">Réinitialiser</Text>
       </TouchableOpacity>
 
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 12,
-  },
-  count: {
-    fontSize: 64,
-    fontWeight: '700',
-    marginBottom: 24,
-  },
-  row: {
-    flexDirection: 'row',
-    gap: 16,
-    marginBottom: 20,
-  },
-  button: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 2,
-  },
-  increment: {
-    backgroundColor: '#4CAF50',
-  },
-  decrement: {
-    backgroundColor: '#F44336',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 32,
-    fontWeight: '600',
-  },
-  reset: {
-    marginTop: 8,
-  },
-  resetText: {
-    color: '#007AFF',
-  },
-});
